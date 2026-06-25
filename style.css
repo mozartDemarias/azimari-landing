@@ -151,7 +151,10 @@ section{
 
 .servico-card {
   flex: 1;
+
   min-width: 280px;
+  max-width: 500px; /*largura*/
+
   background-color: #1f1f1f;
   border: 1px solid #333;
   border-radius: 12px;
@@ -162,6 +165,8 @@ section{
 .servico-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-color);
+
+  box-shadow: 0 0 10px var(--accent-color);
 }
 
 .servico-card h3 {
@@ -207,6 +212,8 @@ footer p {
 
 .botao-contato:hover {
   transform: scale(1.05);
+
+  box-shadow: 0 0 20px var(--accent-color);
 }
 
 .copyright {
