@@ -19,7 +19,7 @@ html, body {
         radial-gradient(1000px 700px at 10% 90%, rgba(6, 182, 212, .22), transparent 55%),
         var(--bg);
     color: var(--text);
-    overflow-x: hidden; /* evita scroll horizontal indesejado */
+    overflow-x: clip; /* ANTES ERA hidden */
 }
 
 /* container fixo para segurar todas as estrelas geradas pelo JS */
@@ -31,11 +31,13 @@ html, body {
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    pointer-events: none; /* Adicione esta linha */
 }
 
 /* overlay fica acima das estrelas mas abaixo do conteúdo, aquela camada escura */
 .overlay {
     z-index: 0;
+    pointer-events: none; /* Adicione esta linha */
 }
 
 /* garante que o conteúdo do site fique acima das estrelas e do overlay */
@@ -51,7 +53,7 @@ html, body {
     border-radius: 50%; /* formato circular */
     opacity: 0.8;
     animation: twinkle var(--duration, 3s) infinite ease-in-out;
-    will-change: transform, opacity; /* otimizar a animação */
+    /*will-change: transform, opacity; /* otimizar a animação */
 }
 
 /* animação de piscar: a estrela pulsa entre menor/escura e maior/brilhante */
@@ -80,4 +82,5 @@ h1 {
     margin-bottom: 20px;
     background: linear-gradient(135deg, #fff 30%, var(--brand2) 100%);
     -webkit-background-clip: text;
+    background-clip: text; /* <--- Adicione esta linha */
 }

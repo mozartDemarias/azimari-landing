@@ -29,16 +29,24 @@
     }
 
     //scroll
+    //scroll
+    let isScrolling = false;
     window.addEventListener('scroll', () => {
-        const scroll = window.scrollY;
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                const scroll = window.scrollY;
 
-        stars.forEach(star => {
-            if (star.speed === 0) return;
+                stars.forEach(star => {
+                    if (star.speed === 0) return;
 
-            let pos = (star.initialY - (scroll * star.speed * 0.05)) % 100;
-            if (pos < 0) pos += 100;
-            star.el.style.top = pos + '%';
-        });
+                    let pos = (star.initialY - (scroll * star.speed * 0.05)) % 100;
+                    if (pos < 0) pos += 100;
+                    star.el.style.top = pos + '%';
+                });
+                isScrolling = false;
+            });
+            isScrolling = true;
+        }
     });
 
 })();
